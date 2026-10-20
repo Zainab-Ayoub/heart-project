@@ -5,10 +5,10 @@ R = 2.0
 C = 1.5
 
 dt = 0.001
-t = np.arrange(0, 20, dt)
+t = np.arange(0, 20, dt)
 
 position_in_beat = np.mod(t, 0.8)
-Q = np.where(position_in_beat < 0.3, 400 * np.sin(np.pi * position_in_beat / 0.3, 0))
+Q = np.where(position_in_beat < 0.3, 400 * np.sin(np.pi * position_in_beat / 0.3), 0)
 
 P = np.zeros(len(t))
 P[0] = 80
@@ -22,3 +22,8 @@ plt.plot(t, P)
 plt.xlabel('time (seconds)')    
 plt.ylabel('blood pressure (mmHg)')    
 plt.show()
+
+
+last_beat_P = P[-800:]
+print("average pressure: ", last_beat_P.mean())
+print("predicted by hand: ", Q.mean() * R)
