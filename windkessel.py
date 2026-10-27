@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-R = 2.0
+R = 1.0
 C = 1.5
 
 dt = 0.001
